@@ -1,0 +1,19 @@
+<h1>TO DO LIST</h1>
+
+<ul id='tasks' style="list-style: none;">
+  <% @tasks.each do |task| %>
+    <li>
+      <input type="checkbox" disabled <%= task.completed ? 'checked' : ''%>>
+      <%= link_to task.title, task_path(task.id) %>
+    </li>
+
+    <%= link_to task_path(task.id), method: :delete, data: { confirm: "Delete #{task.title}?" } do %>
+    <i class="fa fa-trash-o" aria-hidden="true"></i>
+    <% end %>
+  </li>
+  <% end %>
+</ul>
+
+<hr>
+
+<p><%= link_to 'Create', new_task_path %></p>
